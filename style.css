@@ -1,0 +1,12 @@
+:root {
+    --black: #222222;
+    --white: #ffffff;
+    --noble: #b4b3af;
+    --cloud: #c5c5c5;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
