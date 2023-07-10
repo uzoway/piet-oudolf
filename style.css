@@ -1,7 +1,7 @@
 :root {
     --black: #222222;
     --white: #ffffff;
-    --noble: #b4b3af;
+    --noble: #b3b3ae;
     --cloud: #c5c5c5;
 }
 
@@ -9,4 +9,248 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-size: 16px;
+}
+
+html {
+    font-family: 'Clash Grotesk', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Preloader styles */
+
+.preloader {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--noble);
+    position: fixed;
+    top: 0vh;
+    left: 0;
+    padding: 1rem 1rem;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.preloader .preloader__heading {
+    margin-bottom: .8rem;
+    line-height: 1.1;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.preloader .preloader__heading span {
+    font-size: 1rem;
+    display: inline-block;
+    will-change: transform;
+}
+
+.preloader .text__wrapper {
+    overflow: hidden;
+}
+
+.preloader .text__wrapper--content {
+    font-size: 2rem;
+    line-height: .85;
+    padding: .15rem 0 .1rem;
+    will-change: transform;
+    opacity: 0;
+}
+
+
+/* Container styles */
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.wrapper .wrapper__heading {
+    margin: 0 auto;
+    font-weight: 400;
+    white-space: nowrap;
+    font-size: clamp(1rem, 21.5vw, 35vw);
+    line-height: .72;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1rem 0 0;
+    z-index: 2;
+    transform: translateY(1000%);
+}
+
+.wrapper .wrapper__content {
+    max-width: 80vw;
+    margin: -15vh auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: clamp(1rem, 1.2vw, 5vw);
+    font-weight: 500;
+}
+
+.wrapper__content .left__content {
+    flex-basis: 43%;
+}
+
+.wrapper__content .left__content .left__content--paragraph {
+    margin-bottom: 1.2rem;
+}
+
+.left__content--paragraph .paragraph__wrapper {
+    overflow: hidden;
+    display: inline-block;
+    line-height: .95;
+}
+
+.left__content--paragraph .paragraph__wrapper span {
+    font-size: clamp(1rem, 1.2vw, 5vw);
+    display: inline-block;
+    will-change: transform;
+}
+
+.left__content .left__content--link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--black);
+    line-height: .8;
+    overflow: hidden;
+}
+
+
+.left__content .left__content--link img,
+.right__content--controls .video__control img {
+    width: .6rem;
+    margin-left: .5rem;
+}
+
+.wrapper__content .right__content {
+    transform: translateY(30%);
+    flex-basis: 28%;
+}
+
+.right__content .right__content--video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+
+.right__content .right__content--controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: -1rem;
+    overflow: hidden;
+    padding: 0;
+    opacity: 0;
+}
+
+.right__content--controls .video__control {
+    border: none;
+    background: transparent;
+    padding-bottom: .2rem;
+    position: relative;
+    line-height: 1;
+}
+
+.right__content--controls .video__control::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--black);
+    transition: .3s ease-out;
+}
+
+.right__content--controls .video__control:hover::before {
+    width: 100%;
+}
+
+.right__content--controls .video__control span {
+    font-size: clamp(1rem, 1.2vw, 5vw);
+    font-weight: 500;
+    display: inline-block;
+    font-family: 'Clash Grotesk', sans-serif;
+}
+
+
+/* Footer styles */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .8rem 1rem;
+    position: relative;
+}
+
+.footer .footer__line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--black);
+    content: "";
+}
+
+.footer .footer__item {
+    overflow: hidden;
+}
+
+.footer__item, .footer__item ul,
+.footer__item, .footer__item .item {
+    display: flex;
+    line-height: 1;
+    will-change: transform;
+}
+
+.footer__item .item {
+    transform: translateY(0%);
+}
+
+.footer__item .item__heading {
+    color: var(--cloud);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 1.3vw, 5vw);
+}
+
+.footer__item .item__list {
+    list-style: none;
+    padding: 0 .2rem;
+}
+
+.footer__item .item__list .item__list--link {
+    color: var(--black);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 1.3vw, 5vw);
+    text-decoration: none;
+}
+
+.footer .footer__search {
+    background-color: transparent;
+    border: none;
+    font-size: clamp(1.2rem, 1.3vw, 5vw);
+    overflow: hidden;
+    line-height: .9;
+    font-weight: 500;
+}
+
+.footer .footer__search .item {
+    display: inline-block;
+    will-change: transform;
+    font-family: 'Clash Grotesk', sans-serif;
 }
