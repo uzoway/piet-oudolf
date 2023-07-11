@@ -1,6 +1,6 @@
-<!-- # Scroll Triggered Interaction for a Dev site
+# Piet Oudolf Exploration/Animation design
 
-This repo is for the development of a scrolltriggered interaction for a Dev site designed by [Gil Huybrecht](https://www.instagram.com/gil.huybrecht/) [here](https://www.instagram.com/p/CuZYNnsM63H/). 
+This repo is for the development of a web exploration/animation for Piet Oudolf designed by [Alex Tkachev](https://twitter.com/simply_aalex) 👉 [here](https://twitter.com/simply_aalex/status/1677228778768957440). 
 
 ## Table of contents
 
@@ -23,36 +23,10 @@ This repo is for the development of a scrolltriggered interaction for a Dev site
 
 ### Approach
 
-To get the sequencing and timing as close as possible to the design, I downloaded the video and watched it at a playback speed of 0.25. This is an approach I learnt from [Carl](https://twitter.com/snorklTV).
-
-I started by using GSAP to set the total height of the stack(front & back text) wrapper and the bottom wrapper(01 & 02 text) to the height of one of the text (front & 01) respectively:
-```js
-gsap.set(".stack__wrapper", { height: () => document.querySelector(".stack__wrapper--word").offsetHeight + "px" });
-gsap.set(".bottom__wrapper", { height: () => document.querySelector(".first__list").offsetHeight + "px" });
-```
-The next step was to select all the letters in the words to be animated using the gsap.utils.toArray method.
-
-Then I created the timeliine and tweens for the animation:
-```js
-// Timeline containing all transform tween
-let transformTl = gsap.timeline({ defaults: { stagger: 0.1, ease: "expo.inOut", duration: 1.3, }})
-.to(frontendLetter, { yPercent: () => -120 }, 0)
-.to(backendLetter, { yPercent: () => -120 }, 0)
-.to(firstLetter, { y: () => -document.querySelector(".first__list").offsetHeight + "px" }, 0)
-.to(secondLetter, { y: () => -document.querySelector(".first__list").offsetHeight - 3 + "px" }, 0)
-```
-All tween starts at the same time and I achieved this by using the absolute positioning of "0" on them.
-
-Finally, I created a standalone scrolltrigger and tied the ***transformTl*** timeline to it. 
-```js
-// Scroll trigger animation to play the timeline
-ScrollTrigger.create({
-    trigger: ".trigger__animation",
-    start: "top 20%",
-    animation: transformTl,
-    onLeaveBack: () => transformTl.reverse(),
-})
-```
+This was pretty straightforward. So, I started by creating a gsap timeline with some default properties and tied all the tweens to it.
+To ensure smooth easing and timing, I made use of GSAP's position parameter(relative/absolute) which gives you total control on where tweens are placed. This helped me get the animation as close as possible to the initial animation design made by Alex.
+And like always, I watched the video at a reduced playback speed to get a better feel of the motion.
+The entire animation is inside a function ***initializeAnimation()*** that only gets called when the page is loaded.
 
 ## Author
 
@@ -61,4 +35,4 @@ ScrollTrigger.create({
 
 ## Credit 
 
-Huge credits goes to [Gil Huybrecht](https://www.instagram.com/gil.huybrecht/)🙌 who created the design which I have coded. -->
+Huge credits goes to [Alex Tkachev](https://twitter.com/simply_aalex)🙌 for the designs
